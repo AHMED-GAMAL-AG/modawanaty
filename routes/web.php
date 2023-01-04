@@ -18,8 +18,22 @@ Route::get('/', function () {
 });
 
 
-// Route::get('/hello', function () {
-//     return view('hello');
+// Route::get('/hello/{name}' , function($name) //  get the data between the {} in the url
+// {
+//     return view('hello' , [
+//         'name' => $name]);
+//     return view('hello')->with(['name' => $name]);
 // });
 
-Route::view( '/hello' , 'hello' );  // equvilant to the above route uri / route name.blade.php
+// // equivalent to this using with()
+// Route::get('/hello/{name}', function ($name) //  get the data between the {} in the url
+// {
+//     return view('hello')->with(['name' => $name]);
+// });
+
+// equivalent to this using compact()
+Route::get('/hello/{name}', function ($name) //  get the data between the {} in the url
+{
+    return view('hello', compact('name'));  // must be as $name in the method
+});
+
