@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Route::get('/hello', function () {
+//     return view('hello');
+// });
+
+Route::view( '/hello' , 'hello' );  // equvilant to the above route uri / route name.blade.php
