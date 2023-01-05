@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB; // i used DB to acces to use query builder
+use Carbon\Carbon; // i used Carbon package to handle time it comes with laravel you can install it in any project
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,23 +18,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-// Route::get('/hello/{name}' , function($name) //  get the data between the {} in the url
-// {
-//     return view('hello' , [
-//         'name' => $name]);
-//     return view('hello')->with(['name' => $name]);
+// '/posts/create' is the uri
+// Route::get('/posts/create', function () {
+//     return view('posts.create');
 // });
+// equavilant to the above route
 
-// // equivalent to this using with()
-// Route::get('/hello/{name}', function ($name) //  get the data between the {} in the url
-// {
-//     return view('hello')->with(['name' => $name]);
-// });
+Route::view('/posts/create', 'posts.create');  // i can use view() bec it return only a view 'posts.create'
 
-// equivalent to this using compact()
-Route::get('/hello/{name}', function ($name) //  get the data between the {} in the url
-{
-    return view('hello', compact('name'));  // must be as $name in the method
+// '/posts' is the rout uri in recive the data send from the <form action="/posts"-> SAME AS ROUTE URI  method="POST"->SAME AS route::post()  > in create.blade.php
+Route::post('/posts', function () {
+    // 'posts' table name ->insert [ the data ]
+    DB::table('posts')->insert([
+        'title' => request('title'), // 'coulmn name' , request() gets the data user put in the fields
+        'body' => request('body'),
+        'author' => request('author'),
+        'created_at' => now(), // now Create a new Carbon instance for the current time , use Carbon\Carbon;
+        'updated_at' => now(),
+    ]);
+    return back(); // if sucessful return the previous page
 });
 
+
+Route::get('/posts', function () {
+    $posts = DB::table('posts')->get(); // $posts is a collection \Illuminate\Support\Collection $posts wich support alot of helper functions
+    return view('posts.index' , compact('posts'));
+});
