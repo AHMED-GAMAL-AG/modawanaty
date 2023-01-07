@@ -108,7 +108,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    // 'faker_locale' => 'en_US', // i chanded this to arabic language you can find supported langauges in github repository Faker/src/Faker/Provider/
+    'faker_locale' => 'ar_SA',
 
     /*
     |--------------------------------------------------------------------------

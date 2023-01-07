@@ -14,11 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+            $this->call([
+                PostSeeder::class // to run this command  php artisan db:seed --class =  PostSeeder without writing the class name just php artisan db:seed
+            ]);
     }
 }

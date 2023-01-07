@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // i used DB to acces to use query builder
 use Carbon\Carbon; // i used Carbon package to handle time it comes with laravel you can install it in any project
@@ -41,12 +42,14 @@ Route::post('/posts', function () {
 
 
 Route::get('/posts', function () {
-    $posts = DB::table('posts')->latest()->get(); // $posts is a collection \Illuminate\Support\Collection $posts wich support alot of helper functions , latest() based on the timestamp in the column created_at
+    //$posts = DB::table('posts')->latest()->get(); // using querybuilder $posts is a collection \Illuminate\Support\Collection $posts wich support alot of helper functions , latest() based on the timestamp in the column created_at
+    $posts = Post::all(); // using elequent
     return view('posts.index', compact('posts'));
 });
 
 
 Route::get('/posts/{id}', function ($id) {
-    $post = DB::table('posts')->find($id); // find the current post by its id and pass it to the view to show it
+    // $post = DB::table('posts')->find($id); // find the current post by its id and pass it to the view to show it
+    $post = Post::findOrFail($id); // using elequent
     return view('posts.show', compact('post'));
 });
