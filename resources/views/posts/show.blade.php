@@ -221,23 +221,19 @@
         <div class="row">
             <div class="col-md-8 blog-main">
 
-                @foreach ($posts as $post)
-
                 <div class="blog-post mb-3">
 
                     {{-- "posts/{{$post->id}}" this passes to the url the id of the post i clicked on --}}
-                    <a href="posts/{{$post->id}}">
-                        <h2 class="blog-post-title"> {{ $post->title }} </h2>
-                    </a>
-                    <p class="blog-post-body"> بقلم
-                        <a href="#"> {{ $post->author }} </a>
-                        {{-- Carbon\Carbon::parse() converts the string to date because diffForHumans dont allow strings
-                        --}}
-                        {{ Carbon\Carbon::parse ($post->created_at)->diffForHumans() }}
+                    <h2 class="blog-post-title"> {{ $post->title }} </h2>
+
+                    <p class="blog-post-body"> بقلم {{ $post->author }}
+                        {{ Carbon\Carbon::parse ($post->created_at)->diffForHumans() }} {{-- Carbon\Carbon::parse() converts the string to date because diffForHumans dont allow strings--}}
                     </p>
 
+                    <p>
+                        {{$post->body}}
+                    </p>
                 </div>
-                @endforeach
 
                 <nav class="blog-pagination">
                     <a class="btn btn-outline-primary" href="#">Older</a>

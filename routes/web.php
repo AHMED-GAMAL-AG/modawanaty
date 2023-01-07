@@ -41,6 +41,12 @@ Route::post('/posts', function () {
 
 
 Route::get('/posts', function () {
-    $posts = DB::table('posts')->get(); // $posts is a collection \Illuminate\Support\Collection $posts wich support alot of helper functions
-    return view('posts.index' , compact('posts'));
+    $posts = DB::table('posts')->latest()->get(); // $posts is a collection \Illuminate\Support\Collection $posts wich support alot of helper functions , latest() based on the timestamp in the column created_at
+    return view('posts.index', compact('posts'));
+});
+
+
+Route::get('/posts/{id}', function ($id) {
+    $post = DB::table('posts')->find($id); // find the current post by its id and pass it to the view to show it
+    return view('posts.show', compact('post'));
 });
