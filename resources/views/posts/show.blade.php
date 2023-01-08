@@ -179,7 +179,7 @@
                     <a class="text-muted" href="#">Subscribe</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#">Large</a>
+                    <a class="blog-header-logo text-blue" href="#">Large</a>
                 </div>
                 <div class="col-4 d-flex justify-content-end align-items-center">
                     <a class="text-muted" href="#" aria-label="Search">
@@ -233,6 +233,16 @@
                     <p>
                         {{$post->body}}
                     </p>
+
+                    <h1>التعليقات</h1>
+                    @foreach ($post->comments as $comment)
+
+                    <h4>{{ $comment->name }}</h4>
+                    <p>
+                        {{ $comment->body }}
+                    </p>
+
+                    @endforeach
                 </div>
 
                 <nav class="blog-pagination">
