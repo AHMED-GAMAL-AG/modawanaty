@@ -57,13 +57,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post) // model rout binding $post has to be the same name as in the  php artisan route:list command post/{post} .
+    public function show(Post $post) // model route binding $post has to be the same name as in the  php artisan route:list command post/{post} .
     {
         // $post = DB::table('posts')->find($id); // find the current post by its id and pass it to the view to show it
         // $post = Post::findOrFail($id); // using eloquent
-        // $comments = $post->comments()->where('approved', 1)->get();  // use this if you want to show only approved comments and pass to compact  $comments// or you can use $post->comments to get all
+        $comments = $post->comments()->where('approved', 1)->get();  // use this if you want to show only approved comments and pass to compact  $comments// or you can use $post->comments to get all add() to comments() to use eloquent function as where()
 
-        return view('posts.show', compact('post'));
+        return view('posts.show', compact(['post', 'comments']));
     }
 
     /**

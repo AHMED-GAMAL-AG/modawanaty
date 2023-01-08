@@ -14,7 +14,7 @@
     <div class="container">
 
         <!-- action="/posts" is the route name in web.php that will receive the data , method POST to pass the data in the request not the url -->
-        <!-- name="title" name="body" name="author" is the coulmn name in the DATABASE-->
+        <!-- name="title" name="body" name="author" is the column name in the DATABASE-->
         <form action="/posts" method="POST">
             @csrf {{-- @csrf will talk about it later --}}
             <div class="form-group">

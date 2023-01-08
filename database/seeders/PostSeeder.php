@@ -23,8 +23,8 @@ class PostSeeder extends Seeder
         //     'body' => str::random(20),
         // ]);
 
-        // use PostFacory.php instead if the above code i can call Post::factory() bec it is defined in the Post.php use HasFactory;
+        // use PostFactory.php instead if the above code i can call Post::factory() bec it is defined in the Post.php use HasFactory;
         // Laravel convert the function name first Letter to C and add has to it hasComments so i can used it in the data seeder
-        Post::factory()->count(20)->hasComments(3, ['approved' => false])->create(); // factory 20 posts each has 3 comments with approved status = false or true
+        Post::factory()->count(20)->hasComments(3, ['approved' => true])->create(); // factory 20 posts each has 3 comments with approved status = false or true
     }
 }
