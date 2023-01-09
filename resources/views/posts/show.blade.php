@@ -1,48 +1,16 @@
-@extends('posts.layout')
-
-
 @section('title' , $post->title)
 
-@section('content')
-<main role="main" class="container">
-    <div class="row">
-        <div class="col-md-8 blog-main">
-
-            <div class="blog-post mb-3">
-
-                {{-- "posts/{{$post->id}}" this passes to the url the id of the post i clicked on --}}
-                <h2 class="blog-post-title"> {{ $post->title }} </h2>
-
-                <p class="blog-post-body"> بقلم {{ $post->author }}
-                    {{ Carbon\Carbon::parse ($post->created_at)->diffForHumans() }} {{-- Carbon\Carbon::parse() converts
-                    the string to date because diffForHumans dont allow strings--}}
-                </p>
-
-                <p>
-                    {{$post->body}}
-                </p>
+<x-layout>
+    {{-- you should define the $post and $comments variable in the constructor in app/view/components/post.php --}}
+    {{-- you should pass the class as {{$attributes}} in the <x-post> component --}}
+        <x-post :post="$post" :comments="$comments" class="font-weight-bold" />
 
 
-                <h1>التعليقات</h1>
-                @if (count($comments) == 0 )
-                <h1>لا يوجد تعليقات</h1>
-                @else
 
-                {{-- you can use $comments without passing it as you use  model rout binding in PostController Post $post so it passes all the data of the model --}}
-                @foreach ($comments as $comment)
-                <h4>{{ $comment->name }}</h4>
-                <p>
-                    {{ $comment->body }}
-                </p>
-                @endforeach
-                @endif
-            </div>
-
-            <nav class="blog-pagination">
-                <a class="btn btn-outline-primary" href="#">Older</a>
-                <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-            </nav>
-
+        <nav class="blog-pagination">
+            <a class="btn btn-outline-primary" href="#">Older</a>
+            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+        </nav>
         </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">
@@ -80,8 +48,8 @@
             </div>
         </aside><!-- /.blog-sidebar -->
 
-    </div><!-- /.row -->
+        </div><!-- /.row -->
 
-</main><!-- /.container -->
-
-@endsection
+        </main><!-- /.container -->
+        </div>
+</x-layout>

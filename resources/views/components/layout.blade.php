@@ -216,7 +216,8 @@
     </div>
 
 
-    @yield('content') {{-- show the content in the index.blade in the @section('content') --}}
+    {{-- @yield('content') show the content in the index.blade in the @section('content') --}}
+    {{ $slot }}
 
     <footer class="blog-footer">
         <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
