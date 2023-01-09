@@ -16,7 +16,9 @@ use Carbon\Carbon; // i used Carbon package to handle time it comes with laravel
 |
 */
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 // Route::get('/posts/create', [PostsController::class ,'create']);  // i can use view() bec it return only a view 'posts.create'
