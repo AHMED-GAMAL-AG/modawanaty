@@ -10,6 +10,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name' ,'body' ,'post_id'];
+
     // i can call this function as $comment->post
     public function post() // to set a comment BelongsTo post relation
     {

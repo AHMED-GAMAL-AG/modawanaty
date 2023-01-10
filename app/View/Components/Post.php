@@ -6,16 +6,15 @@ use Illuminate\View\Component;
 
 class Post extends Component
 {
-    public $post, $comments;
+    public $post;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($post, $comments)
+    public function __construct($post)
     {
         $this->post = $post;
-        $this->comments = $comments;
     }
 
     /**
@@ -45,22 +44,6 @@ class Post extends Component
                         <p>
                             {{$post->body}}
                         </p>
-
-
-                        <h1>التعليقات</h1>
-                        @if (count($comments) == 0 )
-                        <h1>لا يوجد تعليقات</h1>
-                        @else
-
-                        {{-- you can use $comments without passing it as you use model rout binding in PostController Post
-                        $post so it passes all the data of the model --}}
-                        @foreach ($comments as $comment)
-                        <h4>{{ $comment->name }}</h4>
-                        <p>
-                            {{ $comment->body }}
-                        </p>
-                        @endforeach
-                        @endif
                     </div>
 blade;
     }

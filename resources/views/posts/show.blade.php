@@ -3,14 +3,14 @@
 <x-layout>
     {{-- you should define the $post and $comments variable in the constructor in app/view/components/post.php --}}
     {{-- you should pass the class as {{$attributes}} in the <x-post> component --}}
-        <x-post :post="$post" :comments="$comments" class="font-weight-bold" />
+        <x-post :post="$post" class="blog-post m-3" />
+
+        <x-comment :comments="$comments" />
+
+        <h3>أضف تعليقًا</h3>
+        <x-createComment :post="$post" />
 
 
-
-        <nav class="blog-pagination">
-            <a class="btn btn-outline-primary" href="#">Older</a>
-            <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-        </nav>
         </div><!-- /.blog-main -->
 
         <aside class="col-md-4 blog-sidebar">
