@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -213,11 +213,10 @@
             </nav>
         </div>
 
+
+        {{-- @yield('content') show the content in the index.blade in the @section('content') --}}
+        {{ $slot }}
     </div>
-
-
-    {{-- @yield('content') show the content in the index.blade in the @section('content') --}}
-    {{ $slot }}
 
     <footer class="blog-footer">
         <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a

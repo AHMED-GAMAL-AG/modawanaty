@@ -7,6 +7,7 @@
 
         <x-comment :comments="$comments" />
 
+        <a class="btn btn-primary" href="/posts/{{$post->id}}/edit">تعديل المقالة</a>
         <h3>أضف تعليقًا</h3>
         <x-createComment :post="$post" />
 

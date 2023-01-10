@@ -12,28 +12,15 @@
 
 <body>
     <div class="container">
+<!-- action="/posts" is the route name in web.php that will receive the data , method POST to pass the data in the request not the url -->
+<!-- name="title" name="body" name="author" is the column name in the DATABASE-->
 
-        <!-- action="/posts" is the route name in web.php that will receive the data , method POST to pass the data in the request not the url -->
-        <!-- name="title" name="body" name="author" is the column name in the DATABASE-->
         <form action="/posts" method="POST">
-            @csrf {{-- @csrf will talk about it later --}}
-            <div class="form-group">
-                <label for="title">عنوان المقالة</label>
-                <input type="text" name="title" id="title" class="form-control">
-            </div>
-
-            <div class="form-group">
-                <label for="body">نص المقالة</label>
-                <textarea type="text" name="body" id="body" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="author">كاتب المقالة</label>
-                <input type="text" name="author" id="author" class="form-control">
-            </div>
-
+            {{-- i dont need to pass the $post to the form as it will show '' but in the edit.blade view i will pass it --}}
+            <x-form />
             <button type="submit" class="btn btn-primary">حفظ</button>
         </form>
+
     </div>
 </body>
 
