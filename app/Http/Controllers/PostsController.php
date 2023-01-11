@@ -38,6 +38,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validatePost();
         // 'posts' table name ->insert [ the data ]
         Post::create([
             'title' => request('title'), // 'column name' , request() gets the data user put in the fields
@@ -86,6 +87,8 @@ class PostsController extends Controller
      */
     public function update(Post $post)
     {
+        $this->validatePost();
+
         $post->update([
             'title' => request('title'),
             'body' => request('body'),
@@ -104,5 +107,14 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validatePost() // to validation on data when creating/editing post fields
+    {
+        request()->validate([
+            'title' => 'required|unique:posts|max:100',
+            'body' => 'required',
+            'author' => 'required',
+        ]);
     }
 }
