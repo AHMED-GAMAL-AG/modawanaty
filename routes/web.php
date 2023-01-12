@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // i used DB to access to use query builder
 use Carbon\Carbon; // i used Carbon package to handle time it comes with laravel you can install it in any project
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,10 @@ Route::get('welcome', function () {
 Route::get('/signup/{lang}', function ($lang) {
     App::setLocale($lang);
     return view('signup');
+});
+
+Route::get('mail/', function () {
+    Mail::raw('شكرا لك', function ($message) {
+        $message->to('name@ezample.com')->subject('تواصلي معي');
+    });
 });
