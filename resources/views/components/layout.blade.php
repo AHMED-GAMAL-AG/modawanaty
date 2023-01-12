@@ -191,7 +191,12 @@
                             <path d="M21 21l-5.2-5.2" />
                         </svg>
                     </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+                    <select name="forma" onchange="window.location.href=this.value;">
+                        <option value="">Select Language</option>
+                        <option value="/signup/ar">ar</option>
+                        <option value="/signup/en">en</option>
+                        <option value="/signup/fr">fr</option>
+                    </select>
                 </div>
             </div>
         </header>
