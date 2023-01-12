@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostsController;
+use App\Mail\DiscountOffer;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // i used DB to access to use query builder
@@ -47,8 +48,13 @@ Route::get('/signup/{lang}', function ($lang) {
     return view('signup');
 });
 
-Route::get('mail/', function () {
-    Mail::raw('شكرا لك', function ($message) {
-        $message->to('name@ezample.com')->subject('تواصلي معي');
-    });
+Route::post('mail/', function () {
+    // if the validation is true it returns the request to the $email
+    $email = request()->validate([
+        'email' => 'required|email'
+    ]);
+
+    Mail::to($email)->send(new DiscountOffer);
+
+    return back();
 });
