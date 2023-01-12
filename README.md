@@ -4,7 +4,7 @@
 <h2 dir="rtl"> خطوات تثبيت المشروع: </h2>
 
 <ul dir="rtl">
-<li> htdocs نسخ المشروع الي</li>
+<li>نسخ المشروع الي htdocs</li>
 <li>إنشاء الملف .env  وتعيين قيم الإتصال بقاعدة البيانات</li>
 <li><code>composer install</code></li>
 <li><code>npm install</code></li>
